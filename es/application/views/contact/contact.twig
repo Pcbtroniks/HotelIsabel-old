@@ -1,0 +1,160 @@
+{% extends 'overall/layout.twig' %}
+
+{% block appHeader %}
+<script src="https://www.google.com/recaptcha/api.js"></script>
+{% endblock %}
+
+{% block appBody %}
+	<section class="probootstrap-slider flexslider probootstrap-inner">
+		<ul class="slides">
+			<li style="background-image: url(img/slider-body-about-hotel-isabel.jpg);" class="overlay hero">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-10 col-md-offset-1">
+							<div class="probootstrap-slider-text text-center">
+								<p><img src="img/line_logo_flower_mini.svg" class="seperator probootstrap-animate" alt="Free HTML5 Bootstrap Template"></p>
+
+								{% if is_send == true %}
+									<h1 class="probootstrap-heading probootstrap-animate">¡Su mensaje ha sido enviado exitosamente!</h1>
+									<div class="probootstrap-animate probootstrap-sub-wrap">Nos pondremos en contacto a la brevedad posible.</div>
+								{% else %}
+									<h1 class="probootstrap-heading probootstrap-animate">Contacto</h1>
+									<div class="probootstrap-animate probootstrap-sub-wrap">Para nosotros es muy importante escuchar a nuestros clientes, por favor escribanos, nuestro personal se pondra en contacto a la brevedad.</div>
+								{% endif %}
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</section>
+
+	<section class="probootstrap-section">
+		<div class="container">
+			<div class="row probootstrap-gutter60">
+				<div class="col-md-8">
+					<h2 class="mt0">Charlemos</h2>
+
+					<p>Si usted es representante de una empresa, puede realizar un convenio con nosotros.</p>
+
+					<form action="{{ base_url }}contacto.php" method="post" class="probootstrap-form">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="fname">Primer Nombre</label>
+									<input type="text" class="form-control" id="fname" name="nombre" required>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="lname">Apellido</label>
+									<input type="text" class="form-control" id="lname" name="apellido" required>
+								</div>
+							</div>
+						</div>
+
+						<div class="form-group">
+							<label for="enterprise">Empresa
+								<small>(Opcional)</small>
+							</label>
+							<input type="text" name="empresa" id="enterprise" class="form-control">
+						</div>
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="email">Email</label>
+									<input type="email" class="form-control" id="email" name="email" required>
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="telefono">Teléfono</label>
+									<input type="text" class="form-control" id="telefono" name="telefono" required>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="message">Mensaje</label>
+							<textarea cols="30" rows="5" class="form-control" id="mensaje" name="mensaje" required></textarea>
+						</div>
+
+						<div class="form-group">
+							<div class="g-recaptcha" data-sitekey="6LfRzz4aAAAAAM7lr6yJElJFT7BOPBmRfVwvU41j"></div>
+						</div>
+
+						<div class="form-group">
+							<input type="submit" class="btn btn-primary btn-lg" id="submit" name="submit" value="Enviar mensaje">
+						</div>
+					</form>
+				</div>
+				<div class="col-md-4">
+					<h2 class="mt0">Conócenos</h2>
+					<ul class="probootstrap-contact-info">
+						<li>
+							<i class="icon-location2"></i>
+							<span>
+								<a href="https://g.page/HotelIsabelGdl?share" target="blank_">José Gpe. Montenegro #1572 44170 Guadalajara, Jalisco, México</a>
+							</span>
+						</li>
+						<li>
+							<i class="icon-mail"></i>
+							<span>
+								<a href="mailto:reservaciones@hotelisabel.com" target="blank_">reservaciones@hotelisabel.com</a>
+							</span>
+						</li>
+						<li>
+							<i class="icon-phone2"></i>
+							<span>
+								<a href="tel:+52 33 3826 2630" target="blank_">+52 33 3826 2630</a>
+							</span>
+						</li>
+					</ul>
+					<ul class="probootstrap-footer-social">
+						<li>
+							<a href="https://api.whatsapp.com/send?phone=523322415915&text=Hola,%20necesito%20ayuda" target="blank_">
+								<i class="icon-whatsapp"></i>
+							</a>
+						</li>
+						<li>
+							<a href="https://www.facebook.com/HotelIsabelMx" target="blank_">
+								<i class="icon-facebook"></i>
+							</a>
+						</li>
+						<li>
+							<a href="https://g.page/HotelIsabelGdl?share" target="blank_">
+								<i class="icon-location"></i>
+							</a>
+						</li>
+					</ul>
+					<h2>Feedback</h2>
+					<p>Hotel Isabel agradece sus comentarios utilice también este medio para dejarnos sugerencias y comentarios acerca de su estancia con nostros.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="probootstrap-half">
+		<div class="image" style="background-image: url(img/hotel_isabel_guadalajara.jpg);"></div>
+		<div class="text">
+			<div class="probootstrap-animate fadeInUp probootstrap-animated">
+				<h2 class="mt0">Hotel Isabel</h2>
+				<p><img src="img/line_flower_decorative_full.svg" class="seperator" alt="Free HTML5 Bootstrap Template"></p>
+				<div class="row">
+					<div class="col-md-6">
+						<p>Alberca al aire libre podrás disfrutar de un merecido descanso o de un momento de relajación. No te quedará ni un minuto libre. No climatizada.</p>
+					</div>
+					<div class="col-md-6">
+						<p>Terraza y jardín donde podrás sentarte a disfrutar de tu desayuno mientras te relajas contemplado el paisaje.</p>
+					</div>
+				</div>
+				<p>
+					<a href="#" class="link-with-icon white">Ver más<i class=" icon-chevron-right"></i>
+					</a>
+				</p>
+			</div>
+		</div>
+	</section>
+{% endblock %}

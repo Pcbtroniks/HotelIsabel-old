@@ -1,0 +1,36 @@
+{% extends 'overall/layout.twig' %}
+
+{% block appHeader %}
+	<style>
+		.flexslider.probootstrap-inner {
+			height: 620px !important;
+		}
+	</style>
+	<script src="https://www.google.com/recaptcha/api.js"></script>
+{% endblock %}
+
+{% block appBody %}
+	<section class="probootstrap-section">
+		<div class="container">
+
+			<div class="row probootstrap-gutter40">
+				<div class="col-md-12">
+					<h2 class="mt0 text-center">🎟️ Canjear Cupón</h2>
+
+                    {% if is_redeemed %}
+					<h3>¡Cupón canjeado!</h3>
+					<a href="{{base_url}}verificar-cupon.php">
+						Canjear otro cupón >>
+					</a>
+                    {% else %}
+					<h3>Ocurrió un error al canjear el cupón</h3>
+                    <p>Es posible que el cupón ya haya sido canjeado, verifique nuevamente el estado del cupón.</p>
+					<a href="{{base_url}}verificar-cupon.php">
+						Verificar nuevamente cupón >>
+					</a>
+                    {% endif %}
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

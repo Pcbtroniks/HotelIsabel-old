@@ -1,0 +1,56 @@
+{% extends 'overall/layout.twig' %}
+
+{% block appHeader %}
+	<style>
+		.flexslider.probootstrap-inner {
+			height: 620px !important;
+		}
+	</style>
+{% endblock %}
+
+{% block appBody %}
+	<section class="probootstrap-slider flexslider probootstrap-inner">
+		<ul class="slides">
+			<li style="background-image: url(img/slider-comedor-hotel-isabel.jpg);" class="overlay hero">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-10 col-md-offset-1">
+							<div class="probootstrap-slider-text text-center">
+								<p><img src="img/line_logo_flower_mini.svg" class="seperator probootstrap-animate" alt="Free HTML5 Bootstrap Template"></p>
+								<h1 class="probootstrap-heading probootstrap-animate">✨ Gracias por confiar en nosotros ✨</h1>
+                                <h2 class="probootstrap-heading probootstrap-animate">Su código de descuento: <code>{{ promocode }}</code></h2>
+								<div class="probootstrap-animate probootstrap-sub-wrap">
+									<a href="{{base_url}}comedor.php">
+										<button class="btn btn-primary btn-lg">Regresar a la página del comedor</button>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</section>
+
+		<section class="probootstrap-half">
+			<div class="image" style="background-image: url(img/hotel_isabel_guadalajara.jpg);"></div>
+			<div class="text">
+				<div class="probootstrap-animate fadeInUp probootstrap-animated">
+					<h2 class="mt0">Hotel Isabel</h2>
+					<p><img src="img/line_flower_decorative_full.svg" class="seperator" alt="Free HTML5 Bootstrap Template"></p>
+					<div class="row">
+						<div class="col-md-6">
+							<p>Alberca al aire libre podrás disfrutar de un merecido descanso o de un momento de relajación. No te quedará ni un minuto libre. No climatizada.</p>
+						</div>
+						<div class="col-md-6">
+							<p>Terraza y jardín donde podrás sentarte a disfrutar de tu desayuno mientras te relajas contemplado el paisaje.</p>
+						</div>
+					</div>
+					<p>
+						<a href="#" class="link-with-icon white">Ver más<i class=" icon-chevron-right"></i>
+						</a>
+					</p>
+				</div>
+			</div>
+		</section>
+	{% endblock %}

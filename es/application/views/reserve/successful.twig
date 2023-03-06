@@ -1,0 +1,26 @@
+{% extends 'overall/layout.twig' %}
+
+{% block appBody %}
+    <!-- Hero Area Section Begin -->
+    {# <div class="hero-area set-bg other-page" data-setbg="{{ base_url() }}assets/img/about_bg.jpg">
+    </div> #}
+    <!-- Hero Area Section End -->
+
+    <!-- Room Section Begin -->
+    <section class="services-section spad">
+        <div class="container">
+            <div class="row">
+
+              <div class="col">
+                <h2 class="text-center mb-4">¡Reservación recibida!</h2>
+
+                <p>Se envió una copia de la reservación a su correo electrónico, por favor verifica tu bandeja de entrada; en caso de que no te haya llegado en un plazo de 15 minutos, verifica tu carpeta de spam o ponte en contacto con nosotros. A continuación se muestra tu folio de reserva. Conservelo para cualquier duda o aclaración.</p>
+
+                <p><b>Folio:</b> {{ reservation.folio }}</p>
+              </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Room Section End -->
+{% endblock %}

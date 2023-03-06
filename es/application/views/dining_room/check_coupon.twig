@@ -1,0 +1,61 @@
+{% extends 'overall/layout.twig' %}
+
+{% block appHeader %}
+	<style>
+		.flexslider.probootstrap-inner {
+			height: 620px !important;
+		}
+	</style>
+	<script src="https://www.google.com/recaptcha/api.js"></script>
+{% endblock %}
+
+{% block appBody %}
+	<section class="probootstrap-section">
+		<div class="container">
+
+			<div class="row probootstrap-gutter40">
+				<div class="col-md-12">
+					<h2 class="mt0 text-center">🔎 Verificar Cupón</h2>
+
+					{% if promocode is defined %}
+						<h3>Información del cupón</h3>
+						<p>
+							<b>Código de cupón:</b>
+							{{ promocode.promocode }}</p>
+						<p>
+							<b>Porcentaje de descuento:</b>
+							{{ promocode.percentage }}</p>
+						<p>
+							<b>Estado:</b>
+							{{ promocode.is_redeemed == 0 ? 'Válido' : 'Ya ha sido canjeado' }}</p>
+
+						<a href="{{base_url}}verificar-cupon.php?canjear={{promocode.promocode}}">
+							Canjear cupón >>
+						</a>
+					{% elseif is_invalid %}
+                        <h3>¡Cupón inválido!</h3>
+						<a href="{{base_url}}verificar-cupon.php">
+							Intentar con otro cupón >>
+						</a>    
+                    {% else %}
+						<form action="#" method="post" class="probootstrap-form">
+
+							<div class="form-group">
+								<label>Introduzca el código de cupón</label>
+								<input type="text" class="form-control" name="promocode" required>
+							</div>
+
+							<div class="form-group">
+								<div class="g-recaptcha" data-sitekey="6LfRzz4aAAAAAM7lr6yJElJFT7BOPBmRfVwvU41j"></div>
+							</div>
+
+							<div class="form-group">
+								<input type="submit" class="btn btn-primary btn-lg" id="submit" name="submit" value="Verificar Cupón">
+							</div>
+						</form>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}

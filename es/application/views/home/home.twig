@@ -1,0 +1,438 @@
+{% extends 'overall/layout.twig' %}
+
+{% block appBody %}
+	<section class="probootstrap-slider flexslider">
+		<ul class="slides">
+			<li style="background-image: url({{ base_url() }}img/home/hero-1.jpg);" class="overlay hero">
+				<div class="container">
+
+
+
+					<div class="row">
+						<div class="col-md-10 col-md-offset-1">
+							<div class="probootstrap-slider-text text-center">
+								<p><img src="img/circle_decorative_full.svg" class="seperator probootstrap-animate" alt="Hotel Isabel en Guadalajara Jalisco [Imagen]"></p>
+								<h1 class="probootstrap-heading probootstrap-animate titulo-bold">Hotel Isabel</h1>
+								<div class="probootstrap-animate probootstrap-sub-wrap">
+									<b>Disfrutarás de una magnífica ubicación en pleno Centro de Guadalajara, a solo 15 minutos a pie de Avenida Chapultepec y Consulado de los Estados Unidos en Guadalajara.</b>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li style="background-image: url({{ base_url() }}img/home/hero-2.jpg);" class="overlay hero">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-10 col-md-offset-1">
+							<div class="probootstrap-slider-text text-center">
+								<p><img src="img/curve_white.svg" class="seperator probootstrap-animate" alt="Hotel Isabel en Guadalajara Jalisco [Imagen]"></p>
+								<h1 class="probootstrap-heading probootstrap-animate titulo-bold">Disfruta de la tranquilidad</h1>
+								<div class="probootstrap-animate probootstrap-sub-wrap">Espacios para caminar entre las sombras de los árboles, el aroma de las flores y el sonido de las fuentes.</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</li>
+		</ul>
+	</section>
+
+	<section class="probootstrap-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2 class="text-center">Solicita una Reserva</h2>
+
+					<form action="{{ base_url() }}recommendations/rooms#recomendaciones" method="GET">
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Del día</label>
+									<input type="date" class="form-control" name="check_in" required>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Hasta el día</label>
+									<input type="date" class="form-control" name="check_out" required>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Adulto(s)</label>
+									<input type="number" class="form-control" min="1" name="adults" value="1">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Niño(s)</label>
+									<input type="number" class="form-control" min="0" name="kids" value="0">
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12">
+								<input type="submit" class="btn btn-primary btn-block" value="Ir">
+							</div>
+						</div>
+
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="probootstrap-section">
+		<div class="container">
+			<div class="row mb30">
+				<div class="col-md-8 col-md-offset-2 probootstrap-section-heading text-center">
+					<h2>Explora nuestros servicios</h2>
+					<p class="lead">Disfrutarás de una magnífica ubicación en pleno Centro de Guadalajara, a solo 15 minutos a pie de Avenida Chapultepec y Consulado de los Estados Unidos en Guadalajara.</p>
+					<p><img src="{{ base_url() }}img/line_decorative_full.svg" class="svg" alt="Hotel Isabel en Guadalajara Jalisco [Imagen]"></p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="service left-icon probootstrap-animate">
+						<div class="icon">
+							<img src="{{ base_url() }}img/flaticon/svg/003-habitaciones-baratas-hotel-centrico-isabel-gdl.svg" class="svg" alt="Hotel Isabel en Guadalajara Jalisco [Imagen] by polenavenue.com">
+						</div>
+						<div class="text">
+							<h3>NUESTRAS HABITACIONES</h3>
+							<p>Te sentirás como en tu propia casa en cualquiera de nuestras 54 habitaciones, diferentes entre sí adaptadas a tus necesidades.</p>
+							<p>
+								<a href="rooms.html" class="link-with-icon">Ver más
+									<i class=" icon-chevron-right"></i>
+								</a>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="service left-icon probootstrap-animate">
+						<div class="icon">
+							<img src="{{ base_url() }}img/flaticon/svg/002-el-comedor-restaurante-isabel-gdl.svg" class="svg" alt="El comedor restaurante tradicional">
+						</div>
+						<div class="text">
+							<h3>"EL COMEDOR"</h3>
+							<p>Prueba de deliciosos platillos sin moverte del hotel, en nuestro restaurante ‘‘El Comedor’’</p>
+							<p>
+								<a href="restaurante.html" class="link-with-icon">Ver más
+									<i class=" icon-chevron-right"></i>
+								</a>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="service left-icon probootstrap-animate">
+						<div class="icon">
+							<img src="{{ base_url() }}img/flaticon/svg/001-valiente-transporte.svg" class="svg" alt="Transporte privado El Valiente en Hotel Isabel">
+						</div>
+						<div class="text">
+							<h3>"EL VALIENTE"</h3>
+							<p>Disfruta de nuestro servicio de transporte privado, esperando a llevarte a conocer la ciudad. Disponible para ti las 24hrs.</p>
+							<p>
+								<a href="about.html" class="link-with-icon">Ver más
+									<i class=" icon-chevron-right"></i>
+								</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="probootstrap-section probootstrap-section-dark">
+		<div class="container">
+			<div class="row mb30">
+				<div class="col-md-8 col-md-offset-2 probootstrap-section-heading text-center">
+					<h2>Nuestras Habitaciones</h2>
+					<p class="lead">Te sentirás como en tu propia casa en cualquiera de nuestras 54 habitaciones, diferentes entre sí adaptadas a tus necesidades.</p>
+					<p><img src="{{ base_url() }}img/line_logo_flower.svg" class="svg" alt="Hotel Isabel en Guadalajara Jalisco [Imagen]"></p>
+				</div>
+			</div>
+			<div class="row probootstrap-gutter10">
+				<div class="col-md-6">
+					<div class="probootstrap-block-image-text">
+						<figure>
+							<a href="{{ base_url() }}img/room/habitacion-sencilla-hotel-isabel-gdl.png" class="image-popup">
+								<img src="{{ base_url() }}img/room/habitacion-sencilla-hotel-isabel-gdl.png" alt="Hotel Isabel en Guadalajara Jalisco [Imagen] by polenavenue.com" class="img-responsive">
+							</a>
+							<div class="actions">
+								<a href="{{ base_url() }}img/room/hotel-isabel-guadalaja-video.mp4" class="popup-vimeo">
+									<i class="icon-play2"></i>
+								</a>
+							</div>
+						</figure>
+						<div class="text">
+							<h3>
+								<a href="rooms.html">Habitación Sencilla</a>
+							</h3>
+							<div class="post-meta">
+								<ul>
+									<li>
+										<span class="review-rate">4.7</span>
+										<i class="icon-star"></i>
+										252 Reviews</li>
+									<li>
+										<i class="icon-user2"></i>
+										2 Personas</li>
+								</ul>
+							</div>
+							<p>Habitación Sencilla, especialmente diseñada para tu comodidad y conveniencia, recomendada para 2 personas. Esta habitación cuenta con una mesa de trabajo, equipada con una cama King Size perfecta para una buena noche de sueño.</p>
+							<p>
+								<a href="{{ base_url() }}rooms/habitacion-sencilla" class="btn btn-primary">Más información</a>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="probootstrap-block-image-text">
+						<figure>
+							<a href="{{ base_url() }}img/room/habitacion-doble-hotel-isabel-gdl.png" class="image-popup">
+								<img src="img/room/habitacion-doble-hotel-isabel-gdl.png" alt="Hotel Isabel en Guadalajara Jalisco [Imagen] by polenavenue.com" class="img-responsive">
+							</a>
+							<div class="actions">
+								<a href="{{ base_url() }}img/room/hotel-isabel-guadalaja-video.mp4" class="popup-vimeo">
+									<i class="icon-play2"></i>
+								</a>
+							</div>
+						</figure>
+						<div class="text">
+							<h3>
+								<a href="rooms.html">Habitación Doble</a>
+							</h3>
+							<div class="post-meta">
+								<ul>
+									<li>
+										<span class="review-rate">4.7</span>
+										<i class="icon-star"></i>
+										252 Reviews</li>
+									<li>
+										<i class="icon-user2"></i>
+										4 Personas</li>
+								</ul>
+							</div>
+							<p>Contamos con 40 habitaciones dobles, en ellas podrás disfrutar de la paz y comodidad que produce hospedarse en estas habitaciones estilo rustico, un espacio lleno de confort y descanso. Equipadas con dos camas matrimoniales, ideales para 4 personas.</p>
+							<p>
+								<a href="{{ base_url() }}rooms/habitacion-doble" class="btn btn-primary">Más información</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="probootstrap-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 probootstrap-relative">
+					<h3 class="mt0 mb30">DESCUBRE MÁS DE NUESTRAS HABITACIONES</h3>
+					<ul class="probootstrap-owl-navigation absolute right">
+						<li>
+							<a href="rooms.html" class="probootstrap-owl-prev">
+								<i class="icon-chevron-thin-left"></i>
+							</a>
+						</li>
+						<li>
+							<a href="rooms.html" class="probootstrap-owl-next">
+								<i class="icon-chevron-thin-right"></i>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 probootstrap-relative">
+					<div class="owl-carousel owl-carousel-carousel">
+						<div class="item">
+							<div class="probootstrap-room">
+								<a href="{{ base_url() }}rooms/suite-luis-fernando"><img src="{{ base_url() }}img/room/suit-luis-fernando-hotel-isabel-gdl.png" alt="Hotel Isabel en Guadalajara Jalisco [Imagen] by polenavenue.com" class="img-responsive"></a>
+								<div class="text">
+									<h3>Suite Luis Fernando</h3>
+									<p>Desde
+										<strong>$890.00/Noche</strong>
+									</p>
+									<div class="post-meta">
+										<ul>
+											<li>
+												<span class="review-rate">4.7</span>
+												<i class="icon-star"></i>
+												252 Reviews</li>
+											<li>
+												<i class="icon-user2"></i>
+												3 Personas</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="probootstrap-room">
+								<a href="{{ base_url() }}rooms/suite-isabel"><img src="{{ base_url() }}img/room/suit-isabel-hotel-isabel-gdl.png" alt="Hotel Isabel en Guadalajara Jalisco [Imagen] by polenavenue.com" class="img-responsive"></a>
+								<div class="text">
+									<h3>Suite Isabel</h3>
+									<p>Desde
+										<strong>$890.00/Noche</strong>
+									</p>
+									<div class="post-meta">
+										<ul>
+											<li>
+												<span class="review-rate">4.7</span>
+												<i class="icon-star"></i>
+												252 Reviews</li>
+											<li>
+												<i class="icon-user2"></i>
+												3 Personas</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="probootstrap-room">
+								<a href="{{ base_url() }}rooms/suite-paillaud"><img src="{{ base_url() }}img/room/suit-paillaud-hotel-isabel-gdl.png" alt="Hotel Isabel en Guadalajara Jalisco [Imagen] by polenavenue.com" class="img-responsive"></a>
+								<div class="text">
+									<h3>Suite Paillaud</h3>
+									<p>Desde
+										<strong>$990.00/Noche</strong>
+									</p>
+									<div class="post-meta">
+										<ul>
+											<li>
+												<span class="review-rate">4.7</span>
+												<i class="icon-star"></i>
+												252 Reviews</li>
+											<li>
+												<i class="icon-user2"></i>
+												3 Personas</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="probootstrap-room">
+								<a href="{{ base_url() }}rooms/master-suite"><img src="{{ base_url() }}img/room/master-suite/master-suite-1.png" alt="Hotel Isabel en Guadalajara Jalisco [Imagen] by polenavenue.com" class="img-responsive"></a>
+								<div class="text">
+									<h3>MASTER SUITE</h3>
+									<p>Desde
+										<strong>$1090.00/Noche</strong>
+									</p>
+									<div class="post-meta">
+										<ul>
+											<li>
+												<span class="review-rate">4.7</span>
+												<i class="icon-star"></i>
+												252 Reviews</li>
+											<li>
+												<i class="icon-user2"></i>
+												3 Personas</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="probootstrap-room">
+								<a href="{{ base_url() }}rooms/junior-suite"><img src="{{ base_url() }}img/room/junior-suite/junior-suite-1.png" alt="Hotel Isabel en Guadalajara Jalisco [Imagen] by polenavenue.com" class="img-responsive"></a>
+								<div class="text">
+									<h3>JUNIOR SUITE</h3>
+									<p>Desde
+										<strong>$990.00/Noche</strong>
+									</p>
+									<div class="post-meta">
+										<ul>
+											<li>
+												<span class="review-rate">4.7</span>
+												<i class="icon-star"></i>
+												252 Reviews</li>
+											<li>
+												<i class="icon-user2"></i>
+												3 Personas</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="probootstrap-room">
+								<a href="rooms.html"><img src="{{ base_url() }}img/room/habitacion-doble-hotel-isabel-gdl.png" alt="Hotel Isabel en Guadalajara Jalisco [Imagen] by polenavenue.com" class="img-responsive"></a>
+								<div class="text">
+									<h3>Suite Doble</h3>
+									<p>Desde
+										<strong>$890.00/Noche</strong>
+									</p>
+									<div class="post-meta">
+										<ul>
+											<li>
+												<span class="review-rate">4.7</span>
+												<i class="icon-star"></i>
+												252 Reviews</li>
+											<li>
+												<i class="icon-user2"></i>
+												4 Personas</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item">
+							<div class="probootstrap-room">
+								<a href="rooms.html"><img src="{{ base_url() }}img/room/habitacion-sencilla-hotel-isabel-gdl.png" alt="Hotel Isabel en Guadalajara Jalisco [Imagen] by polenavenue.com" class="img-responsive"></a>
+								<div class="text">
+									<h3>Habitación Estándar</h3>
+									<p>Starting from
+										<strong>$690.00/Noche</strong>
+									</p>
+									<div class="post-meta">
+										<ul>
+											<li>
+												<span class="review-rate">4.7</span>
+												<i class="icon-star"></i>
+												252 Reviews</li>
+											<li>
+												<i class="icon-user2"></i>
+												3 Personas</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="probootstrap-half">
+		<div class="image" style="background-image: url({{ base_url() }}img/hotel_isabel_guadalajara.jpg);"></div>
+		<div class="text">
+			<div class="probootstrap-animate fadeInUp probootstrap-animated">
+				<h2 class="mt0">Hotel Isabel</h2>
+				<p><img src="{{ base_url() }}img/line_flower_decorative_full.svg" class="seperator" alt="Hotel Isabel en Guadalajara Jalisco [Imagen]"></p>
+				<div class="row">
+					<div class="col-md-6">
+						<p>Alberca al aire libre podrás disfrutar de un merecido descanso o de un momento de relajación. No te quedará ni un minuto libre. No climatizada.</p>
+					</div>
+					<div class="col-md-6">
+						<p>Terraza y jardín donde podrás sentarte a disfrutar de tu desayuno mientras te relajas contemplado el paisaje.</p>
+					</div>
+				</div>
+				<p>
+					<a href="about.html" class="link-with-icon white">Ver más<i class=" icon-chevron-right"></i>
+					</a>
+				</p>
+			</div>
+		</div>
+	</section>
+{% endblock %}

@@ -1,0 +1,181 @@
+{% extends 'overall/layout.twig' %}
+
+{% block appHeader %}
+<style>
+.flexslider.probootstrap-inner {
+	height: 620px !important;
+}
+</style>
+<script src="https://www.google.com/recaptcha/api.js"></script>
+{% endblock %}
+
+{% block appBody %}
+	<section class="probootstrap-slider flexslider probootstrap-inner">
+		<ul class="slides">
+			<li style="background-image: url(img/slider-comedor-hotel-isabel.jpg);" class="overlay hero">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-10 col-md-offset-1">
+							<div class="probootstrap-slider-text text-center">
+								<p><img src="img/line_logo_flower_mini.svg" class="seperator probootstrap-animate" alt="Free HTML5 Bootstrap Template"></p>
+								<h1 class="probootstrap-heading probootstrap-animate">El Comedor</h1>
+								<div class="probootstrap-animate probootstrap-sub-wrap">
+									<p>Lunes a Domingo 07:00 a 22:00 hrs</p>
+									<p>Disfruta de el sabor de nuestros auténticos chilaquiles tapatíos, desde 1959 estamos presentes en Guadalajara para que tu estancia con nosotros sea placentera.</p>
+									<a href="{{base_url}}files/menu-de-el-comedor.pdf"><button class="btn btn-primary btn-lg">Menú Digital</button></a>
+									<a href="{{base_url}}files/promocion-el-comedor.pdf"><button class="btn btn-primary btn-lg">Promociones</button></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</section>
+
+	<section class="probootstrap-section">
+		<div class="container">
+
+			<div class="row">
+
+				<div class="col-md-12 probootstrap-relative">
+					<h2 class="mt0 mb30">Conócelo</h2>
+					<ul class="probootstrap-owl-navigation absolute right">
+						<li>
+							<a href="rooms.html" class="probootstrap-owl-prev">
+								<i class="icon-chevron-thin-left"></i>
+							</a>
+						</li>
+						<li>
+							<a href="rooms.html" class="probootstrap-owl-next">
+								<i class="icon-chevron-thin-right"></i>
+							</a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+
+			<div class="row">
+				<div class="col-md-12 probootstrap-relative">
+					<div class="owl-carousel owl-carousel-carousel">
+						<div class="item">
+							<div class="probootstrap-room">
+								<img src="{{ base_url }}img/el-comedor/el-comedor-1.png" alt="Hotel Isabel en Guadalajara Jalisco [Imagen] by polenavenue.com" class="img-responsive">
+							</div>
+						</div>
+						<div class="item">
+							<div class="probootstrap-room">
+								<img src="{{ base_url }}img/el-comedor/el-comedor-2.png" alt="Hotel Isabel en Guadalajara Jalisco [Imagen] by polenavenue.com" class="img-responsive">
+							</div>
+						</div>
+						<div class="item">
+							<div class="probootstrap-room">
+								<img src="{{ base_url }}img/el-comedor/el-comedor-3.png" alt="Hotel Isabel en Guadalajara Jalisco [Imagen] by polenavenue.com" class="img-responsive">
+							</div>
+						</div>
+						<div class="item">
+							<div class="probootstrap-room">
+								<img src="{{ base_url }}img/el-comedor/el-comedor-4.png" alt="Hotel Isabel en Guadalajara Jalisco [Imagen] by polenavenue.com" class="img-responsive">
+							</div>
+						</div>
+						<div class="item">
+							<div class="probootstrap-room">
+								<img src="{{ base_url }}img/el-comedor/el-comedor-5.png" alt="Hotel Isabel en Guadalajara Jalisco [Imagen] by polenavenue.com" class="img-responsive">
+							</div>
+						</div>
+						<div class="item">
+							<div class="probootstrap-room">
+								<img src="{{ base_url }}img/el-comedor/el-comedor-6.png" alt="Hotel Isabel en Guadalajara Jalisco [Imagen] by polenavenue.com" class="img-responsive">
+							</div>
+						</div>
+						<div class="item">
+							<div class="probootstrap-room">
+								<img src="{{ base_url }}img/el-comedor/el-comedor-7.png" alt="Hotel Isabel en Guadalajara Jalisco [Imagen] by polenavenue.com" class="img-responsive">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div style="display: none;" class="row probootstrap-gutter40">
+				<div class="col-md-12">
+					<h2 class="mt0">🤩 ¡Obtén un cupón de descuento! </h2>
+
+					{% if promocode is defined %}
+					<h3 name="promocode">Su código de descuento es: <code>{{promocode}}</code></h3>
+					{% else %}
+					<form action="#" method="post" class="probootstrap-form">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="fname">Nombre</label>
+									<input type="text" class="form-control" id="fname" name="name" required>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="lname">Apellido(s)</label>
+									<input type="text" class="form-control" id="lname" name="surname" required>
+								</div>
+							</div>
+						</div>
+
+						<div class="row mb30">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="email">Email</label>
+									<div class="form-field">
+										<i class="icon icon-mail"></i>
+										<input type="email" class="form-control" id="email" name="email" required>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="date-arrival">Cumpleaños</label>
+									<div class="form-field">
+										<i class="icon icon-calendar2"></i>
+										<input type="text" class="form-control" id="date-arrival" name="birthday" required>
+									</div>
+								</div>
+							</div>
+						</div><!--./row -->
+
+						<div class="form-group">
+							<div class="g-recaptcha" data-sitekey="6LfRzz4aAAAAAM7lr6yJElJFT7BOPBmRfVwvU41j"></div>
+						</div>
+
+						<div class="form-group">
+							<input type="submit" class="btn btn-primary btn-lg" id="submit" name="submit" value="Obtener Cupón">
+						</div>
+					</form>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="probootstrap-half">
+		<div class="image" style="background-image: url(img/hotel_isabel_guadalajara.jpg);"></div>
+		<div class="text">
+			<div class="probootstrap-animate fadeInUp probootstrap-animated">
+				<h2 class="mt0">Hotel Isabel</h2>
+				<p><img src="img/line_flower_decorative_full.svg" class="seperator" alt="Free HTML5 Bootstrap Template"></p>
+				<div class="row">
+					<div class="col-md-6">
+						<p>Alberca al aire libre podrás disfrutar de un merecido descanso o de un momento de relajación. No te quedará ni un minuto libre. No climatizada.</p>
+					</div>
+					<div class="col-md-6">
+						<p>Terraza y jardín donde podrás sentarte a disfrutar de tu desayuno mientras te relajas contemplado el paisaje.</p>
+					</div>
+				</div>
+				<p>
+					<a href="#" class="link-with-icon white">Ver más<i class=" icon-chevron-right"></i>
+					</a>
+				</p>
+			</div>
+		</div>
+	</section>
+{% endblock %}

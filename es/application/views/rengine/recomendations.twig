@@ -1,0 +1,127 @@
+{% extends 'overall/layout.twig' %}
+
+{% block appBody %}
+	<section class="probootstrap-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2 class="text-center">Solicita una Reserva</h2>
+
+					<form action="{{ base_url() }}recommendations/rooms#recomendaciones" method="GET">
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Del día</label>
+									<input type="date" class="form-control" name="check_in" required>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Hasta el día</label>
+									<input type="date" class="form-control" name="check_out" required>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Adulto(s)</label>
+									<input type="number" class="form-control" min="1" name="adults" required>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Niño(s)</label>
+									<input type="number" class="form-control" min="0" name="kids" required>
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-12">
+								<input type="submit" class="btn btn-primary btn-block" value="Ir">
+							</div>
+						</div>
+
+					</form>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="probootstrap-section probootstrap-section-dark">
+		<div class="container">
+			<div class="row mb30">
+				<div class="col-md-8 col-md-offset-2 probootstrap-section-heading text-center">
+					<h2 id="recomendaciones">Recomendaciones</h2>
+				</div>
+			</div>
+			<div class="row probootstrap-gutter10">
+                
+                 {% for room in recommend_rooms %}
+                
+				<div class="col-md-6">
+					<div class="probootstrap-block-image-text">
+						<figure>
+							<a href="{{ base_url() }}img/room/habitacion-sencilla-hotel-isabel-gdl.png" class="image-popup">
+								<img src="{{ base_url() }}img/room/habitacion-sencilla-hotel-isabel-gdl.png" alt="Hotel Isabel en Guadalajara Jalisco [Imagen] by polenavenue.com" class="img-responsive">
+							</a>
+						</figure>
+						<div class="text">
+							<h3>
+								<a href="rooms.html"><small>{{ room.rooms }} x</small> {{ room.name }}</a>
+							</h3>
+							<div class="post-meta">
+								<ul>
+                                    {{ reservacion.check_in }}
+									<li><b>Check-in:</b> {{ room.check_in }}</li>
+									<li><b>Check-out:</b> {{ room.check_out }}</li>
+								</ul>
+							</div>
+                            <div class="post-meta">
+                                <ul>
+                                    <li><b>Ocupación:</b> {{ room.adults }} Adulto(s), 0 Adulto(s) extra y {{ room.kids }} Niño(s).</li>
+                                </ul>
+                            </div>
+							<p>{{ room.description }}</p>
+                            
+                            {#<p><b>Costo por noche(s):</b> MXN {{ room.price_night }}</p> #}
+                            <h4>MXN {{ room.subtotal }}</h4>
+                            <p><small>+ MXN {{ room.taxes}} de impuestos y cargos.</small></p>
+							<p>
+								<a href="{{ base_url() }}book-now?room_id={{ room.room_id }}&num_rooms={{ room.rooms }}&check_in={{ room.check_in }}&check_out={{ room.check_out }}&adults={{room.adults}}&kids={{room.kids}}" class="btn btn-primary">Pre-reservación</a>
+							</p>
+						</div>
+					</div>
+				</div>
+                
+                {% endfor %}
+			</div>
+		</div>
+	</section>
+
+	<section class="probootstrap-half">
+		<div class="image" style="background-image: url({{ base_url() }}img/hotel_isabel_guadalajara.jpg);"></div>
+		<div class="text">
+			<div class="probootstrap-animate fadeInUp probootstrap-animated">
+				<h2 class="mt0">Hotel Isabel</h2>
+				<p><img src="{{ base_url() }}img/line_flower_decorative_full.svg" class="seperator" alt="Hotel Isabel en Guadalajara Jalisco [Imagen]"></p>
+				<div class="row">
+					<div class="col-md-6">
+						<p>Alberca al aire libre podrás disfrutar de un merecido descanso o de un momento de relajación. No te quedará ni un minuto libre. No climatizada.</p>
+					</div>
+					<div class="col-md-6">
+						<p>Terraza y jardín donde podrás sentarte a disfrutar de tu desayuno mientras te relajas contemplado el paisaje.</p>
+					</div>
+				</div>
+				<p>
+					<a href="about.html" class="link-with-icon white">Ver más<i class=" icon-chevron-right"></i>
+					</a>
+				</p>
+			</div>
+		</div>
+	</section>
+{% endblock %}

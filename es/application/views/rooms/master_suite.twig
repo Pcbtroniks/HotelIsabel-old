@@ -1,0 +1,112 @@
+{% extends 'overall/layout.twig' %}
+
+{% block appBody %}
+	<section class="probootstrap-slider flexslider probootstrap-inner">
+		<ul class="slides">
+			<li style="background-image: url({{ base_url() }}img/slider-body-about-hotel-isabel.jpg);" class="overlay hero">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-10 col-md-offset-1">
+							<div class="probootstrap-slider-text text-center">
+								<p><img src="{{ base_url() }}img/line_logo_flower_mini.svg" class="seperator probootstrap-animate" alt="Hotel Isabel en Guadalajara Jalisco [Imagen] by polenavenue.com"></p>
+								<h1 class="probootstrap-heading probootstrap-animate">HABITACIONES</h1>
+								<div class="probootstrap-animate probootstrap-sub-wrap">Especialmente diseñadas para tu comodidad y conveniencia.</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</section>
+
+	<section class="probootstrap-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 probootstrap-relative">
+					<h2 class="text-center">Master Suite</h2>
+				</div>
+
+				<div class="col-md-12 probootstrap-relative">
+					<h3 class="mt0 mb30">CONÓCELA</h3>
+					<ul class="probootstrap-owl-navigation absolute right">
+						<li>
+							<a href="rooms.html" class="probootstrap-owl-prev">
+								<i class="icon-chevron-thin-left"></i>
+							</a>
+						</li>
+						<li>
+							<a href="rooms.html" class="probootstrap-owl-next">
+								<i class="icon-chevron-thin-right"></i>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 probootstrap-relative">
+					<div class="owl-carousel owl-carousel-carousel">
+						<div class="item">
+							<div class="probootstrap-room">
+								<img src="{{ base_url() }}img/room/master-suite/master-suite-1.png" alt="Hotel Isabel en Guadalajara Jalisco [Imagen] by polenavenue.com" class="img-responsive">
+							</div>
+						</div>
+						<div class="item">
+							<div class="probootstrap-room">
+								<img src="{{ base_url() }}img/room/master-suite/master-suite-2.png" alt="Hotel Isabel en Guadalajara Jalisco [Imagen] by polenavenue.com" class="img-responsive">
+							</div>
+						</div>
+						<div class="item">
+							<div class="probootstrap-room">
+								<img src="{{ base_url() }}img/room/master-suite/master-suite-3.png" alt="Hotel Isabel en Guadalajara Jalisco [Imagen] by polenavenue.com" class="img-responsive">
+							</div>
+						</div>
+						<div class="item">
+							<div class="probootstrap-room">
+								<img src="{{ base_url() }}img/room/master-suite/master-suite-4.png" alt="Hotel Isabel en Guadalajara Jalisco [Imagen] by polenavenue.com" class="img-responsive">
+							</div>
+						</div>
+						<div class="item">
+							<div class="probootstrap-room">
+								<img src="{{ base_url() }}img/room/master-suite/master-suite-5.png" alt="Hotel Isabel en Guadalajara Jalisco [Imagen] by polenavenue.com" class="img-responsive">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-6">
+                    <p>Ven y relájate en compañía de tu pareja y disfruta de un espacio a solas y convierte tu día en un momento especial vive tu noche romántica o simplemente disfruta de tu estancia en la ciudad.</p>
+                    <p>La Master Suite cuenta con una sala de descanso, comedor, cocina y todas las comodidades para hacer tu estancia placentera.</p>
+				</div>
+				<div class="col-md-6">
+					<img src="{{ base_url() }}img/room/servicios.png" alt="">
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+
+	<section class="probootstrap-half">
+		<div class="image" style="background-image: url({{ base_url() }}img/hotel_isabel_guadalajara.jpg);"></div>
+		<div class="text">
+			<div class="probootstrap-animate fadeInUp probootstrap-animated">
+				<h2 class="mt0">Hotel Isabel</h2>
+				<p><img src="{{ base_url() }}img/line_flower_decorative_full.svg" class="seperator" alt="Hotel Isabel en Guadalajara Jalisco [Imagen] by polenavenue.com"></p>
+				<div class="row">
+					<div class="col-md-6">
+						<p>Alberca al aire libre podrás disfrutar de un merecido descanso o de un momento de relajación. No te quedará ni un minuto libre. No climatizada.</p>
+					</div>
+					<div class="col-md-6">
+						<p>Terraza y jardín donde podrás sentarte a disfrutar de tu desayuno mientras te relajas contemplado el paisaje.</p>
+					</div>
+				</div>
+				<p>
+					<a href="about.html" class="link-with-icon white">Ver más<i class=" icon-chevron-right"></i>
+					</a>
+				</p>
+			</div>
+		</div>
+	</section>
+{% endblock %}

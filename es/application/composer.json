@@ -1,0 +1,14 @@
+{
+    "name": "358b06c6/arborea",
+    "description": "Website",
+    "type": "project",
+    "require": {
+        "kenjis/codeigniter-ss-twig": "^0.4.0"
+    },
+    "authors": [
+        {
+            "name": "Eduardo Ramirez",
+            "email": "eduardo.ramirez@pcbtroniks.com"
+        }
+    ]
+}
