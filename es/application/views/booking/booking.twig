@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Detalles de la reservación</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- components -->
+    <!-- /components -->
+    <link rel="stylesheet" href="{{ base_url() }}assets/css/booking.css">
+  </head>
+  <body class="bg-indigo-50">
+    <!-- Header -->
+    <header class="bg-indigo-50">
+        <img src="{{ base_url() }}img/logos/logo.png" alt="logo" class="w-40 mx-auto py-4">
+    </header>
+   <!-- Form -->
+    <div class="flex items-center justify-center p-12">
+        <div class="mx-auto w-full max-w-[550px] box-shadow bg-white p-12">
+            <form action="{{ base_url() }}booking/save_booking" method="POST">
+                <!-- Name -->
+                <div class="-mx-3 flex flex-wrap">
+                    <div class="w-full px-3 sm:w-1/2">
+                        <div class="mb-5">
+                            <label
+                            for="name"
+                            class="mb-3 block text-base font-medium text-[#07074D]"
+                            >
+                            Nombre
+                            </label>
+                            <input
+                            type="text"
+                            name="name"
+                            id="name"
+                            placeholder="Nombre"
+                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            />
+                        </div>
+                    </div>
+                    <div class="w-full px-3 sm:w-1/2">
+                        <div class="mb-5">
+                            <label
+                            for="lastname"
+                            class="mb-3 block text-base font-medium text-[#07074D]"
+                            >
+                            Apellido
+                            </label>
+                            <input
+                            type="text"
+                            name="lastname"
+                            id="lastname"
+                            placeholder="Apellido/s"
+                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            />
+                        </div>
+                    </div>
+                </div>
+                <!-- Contact -->
+                <div class="-mx-3 flex flex-wrap">
+                    <div class="w-full px-3 sm:w-1/2">
+                    <div class="mb-5">
+                        <label
+                        for="phone"
+                        class="mb-3 block text-base font-medium text-[#07074D]"
+                        >
+                            Telefono
+                        </label>
+                        <input
+                        type="text"
+                        name="phone"
+                        id="phone"
+                        placeholder="Telefono"
+                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                        />
+                    </div>
+                    </div>
+                    <div class="w-full px-3 sm:w-1/2">
+                    <div class="mb-5">
+                        <label
+                        for="email"
+                        class="mb-3 block text-base font-medium text-[#07074D]"
+                        >
+                        Email
+                        </label>
+                        <input
+                        type="text"
+                        name="email"
+                        id="email"
+                        placeholder="Emails"
+                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                        />
+                    </div>
+                    </div>
+                </div>
+                <div class="mb-5">
+                    <label
+                    for="comments"
+                    name="comments"
+                    class="mb-3 block text-base font-medium text-[#07074D]"
+                    >
+                        Especificaciones y comentarios
+                    </label>
+                    <textarea
+                     class="w-full appearance-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                    ></textarea>
+                </div>
+
+                <!-- Bank Transfer -->
+                <div class="mb-5">
+                    <label class="mb-3 block text-base font-medium text-[#07074D]">
+                    Metodo de pago
+                    </label>
+                    <div class="flex items-center space-x-6">
+                    <div class="flex items-center">
+                        <input
+                        type="radio"
+                        name="payment_method"
+                        id="card"
+                        value="card"
+                        class="h-5 w-5"
+                        />
+                        <label
+                        for="card"
+                        class="pl-3 text-base font-medium text-[#07074D]"
+                        >
+                        Tarjeta
+                        </label>
+                    </div>
+                    <div class="flex items-center">
+                        <input
+                        type="radio"
+                        name="payment_method"
+                        id="spei"
+                        value="spei"
+                        class="h-5 w-5"
+                        />
+                        <label
+                        for="spei"
+                        class="pl-3 text-base font-medium text-[#07074D]"
+                        >
+                        SPEI
+                        </label>
+                    </div>
+                    </div>
+                </div>
+
+                <!-- Card Details -->
+                                <!-- Name -->
+                <div class="-mx-3 flex flex-wrap">
+                    <div class="w-full px-3">
+                        <div class="mb-5">
+                            <label
+                            for="cc_name"
+                            class="mb-3 block text-base font-medium text-[#07074D]"
+                            >
+                            Nombre en la tarjeta
+                            </label>
+                            <input
+                            type="text"
+                            name="cc_name"
+                            id="cc_name"
+                            value=""
+                            placeholder="Nombre"
+                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            />
+                        </div>
+                        <div class="mb-5">
+                            <label
+                            for="cc_number"
+                            class="mb-3 block text-base font-medium text-[#07074D]"
+                            >
+                            Numero de la tarjeta
+                            </label>
+                            <input
+                            type="text"
+                            name="cc_number"
+                            id="cc_number"
+                            value=""
+                            placeholder="CC Number"
+                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            />
+                        </div>
+                    </div>
+                    <!-- CCV -->
+                    <div class="w-full px-3 sm:w-1/3">
+                        <div class="mb-5">
+                            <label
+                            for="cc_month"
+                            class="mb-3 block text-base font-medium text-[#07074D]"
+                            >
+                            Caducidad
+                            </label>
+                            <input
+                            type="text"
+                            name="cc_expires_mm"
+                            id="cc_month"
+                            placeholder="MM"
+                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            />
+                        </div>
+                    </div>
+                    <div class="w-full px-3 sm:w-1/3">
+                        <div class="mb-5">
+                            <label
+                            for="cc_year"
+                            class="mb-3 block text-base font-medium text-[#07074D]"
+                            >
+                            &nbsp;
+                            </label>
+                            <input
+                            type="text"
+                            name="cc_expires_yy"
+                            id="cc_year"
+                            placeholder="YY"
+                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            />
+                        </div>
+                    </div>
+                    <div class="w-full px-3 sm:w-1/3">
+                        <div class="mb-5">
+                            <label
+                            for="cc_cvv"
+                            class="mb-3 block text-base font-medium text-[#07074D]"
+                            >
+                            CVV
+                            </label>
+                            <input
+                            type="text"
+                            name="cc_cvv"
+                            id="cc_cvv"
+                            placeholder="CVV"
+                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="-mx-3 flex flex-wrap hidden">
+                    <div class="w-full px-3 sm:w-1/2">
+                        <div class="mb-5">
+                            <label
+                            for="date"
+                            class="mb-3 block text-base font-medium text-[#07074D]"
+                            >
+                            Date
+                            </label>
+                            <input
+                            type="date"
+                            name="check_in"
+                            value=""
+                            id="date"
+                            class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                            />
+                        </div>
+                    </div>
+                    <div class="w-full px-3 sm:w-1/2">
+                    <div class="mb-5">
+                        <label
+                        for="time"
+                        class="mb-3 block text-base font-medium text-[#07074D]"
+                        >
+                        Time
+                        </label>
+                        <input
+                        type="time"
+                        name="time"
+                        id="time"
+                        class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                        />
+                    </div>
+                    </div>
+                </div>
+
+                <div>
+                    <button
+                    class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none"
+                    >
+                    Submit
+                    </button>
+                </div>
+
+
+                <!-- Room Details -->
+                        <input type="hidden" name="room_id" value="{{room.room_id}}">
+                        <input type="hidden" name="num_rooms" value="1">
+                        <input type="hidden" name="check_in" value="{{booking.check_in}}">
+                        <input type="hidden" name="check_out" value="{{booking.check_out}}">
+                        <input type="hidden" name="adults" value="{{booking.adults}}">
+                        <input type="hidden" name="kids" value="{{booking.kids}}">
+                        <input type="hidden" name="nights" value="{{booking.nights}}">
+                <!-- /Room Details -->
+            </form>
+        </div>
+    </div>
+   <!-- Form -->
+
+  </body>
+</html>
