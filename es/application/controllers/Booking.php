@@ -51,14 +51,7 @@ class Booking extends CI_Controller {
     {
         $this->getClientBookInfo();
         $this->room = $this->room_model->get_room(intval($this->input->get('room_id')));
-        // echo '<pre>';
-            // var_dump($this->room);
-            // echo 'start_date ' . $this->check_in;
-            // echo 'end_date ' .$this->check_out;
-            // echo 'adults ' .$this->adults;
-            // echo 'minors ' .$this->kids;
-        // echo '</pre>';
-        // die();
+
         $this->twig->display('booking/booking', array(
             'room' => $this->room,
             'booking' => $this->getClientBookInfo(),
@@ -97,24 +90,22 @@ class Booking extends CI_Controller {
 
     public function save_booking()
     {
-        $post = $_POST;
-        echo '<pre>';
-            var_dump($post);
-        echo '</pre>';
-        die();
+        # Set email data
+        $this->folio = uniqid();
 
         # Set reservation data
+        $nights = $this->input->post('nights');
         $this->room_id = $this->input->post('room_id');
-        $this->num_rooms = $this->input->post('num_rooms');
+        $this->num_rooms = $this->input->post('num_rooms') ?? 1;
         $this->check_in = $this->input->post('check_in');
         $this->check_out = $this->input->post('check_out');
 
         # Set responsable data
-
         $responsable_name = $this->input->post('name');
         $responsable_surname = $this->input->post('lastname');
         $responsable_email = $this->input->post('email');
         $responsable_phone = $this->input->post('phone');
+        $observations_guest = $this->input->post('observations_guest'); 
 
         # Set payment data
         $payment_method = $this->input->post('payment_method');
@@ -122,15 +113,26 @@ class Booking extends CI_Controller {
         $cc_number = $this->input->post('cc_number');
         $cc_expires_mm = $this->input->post('cc_expires_mm');
         $cc_expires_yy = $this->input->post('cc_expires_yy');
+        $cc_expires = $cc_expires_mm . '/' . $cc_expires_yy;
         $cc_cvv = $this->input->post('cc_cvv');
 
 
-        $this->room = $this->room_model->get_room(intval($this->input->get('room_id')));
+        # Get room
+        $this->room = $this->room_model->get_room(intval($this->room_id));
 
         # Set room
         $this->room_type = $this->room['name'];
         $this->room_rack_price = $this->room['price'];
 
+        var_dump($this->room);
+
+        # Set subtotal
+        $subtotal = $this->set_subtotal($this->room_rack_price, $nights);
+        
+        # Set total
+        $total = $this->set_total($subtotal, .19);
+
+        # Save reservation
         $reservation = array(
             'folio' => $this->folio,
             'room_id' => $this->room_id,
@@ -144,21 +146,38 @@ class Booking extends CI_Controller {
             'payment_method' => $payment_method,
             'cc_name' => $cc_name,
             'cc_number' => $cc_number,
-            'cc_expires' => $cc_expires_mm . '/' . $cc_expires_yy,
+            'cc_expires' => $cc_expires,
             'cc_cvv' => $cc_cvv,
-            'observations_guest' => $this->observations_guest,
-            'subtotal' => $this->subtotal,
-            'total' => $this->total
-          );
+            'observations_guest' => $observations_guest,
+            'subtotal' => $this->priceFormat($subtotal),
+            'total' => $this->priceFormat($total),
+        );
 
-            # Set email data
-            $this->folio = uniqid();
-            $this->subject = '🛄 ¡Gracias! Tu reserva en el Hotel Isabel';
+        $success = false;
+        if($this->book_now_model->register($reservation))
+        {
+            $success = true;
+        }
+
+        $this->twig->display('booking/success_booking', array(
+            'reservation' => $reservation,
+            'success' => $success ? 'Exito': 'Error',
+        ));
     }
 
-    public function set_subtotal($roomPrice, $nights)
+    public function success_booking()
+    {
+        $this->twig->display('booking/success_booking');
+    }
+
+    public function set_subtotal($roomPrice, $nights = 1)
     {
         return $roomPrice * $nights;
+    }
+
+    public function set_total($subtotal, $tax = .19)
+    {
+        return $subtotal + $tax;
     }
 
     private function priceFormat($price)

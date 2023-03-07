@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- components -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.3/flowbite.min.css"  rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- /components -->
     <link rel="stylesheet" href="{{ base_url() }}assets/css/booking.css">
   </head>
@@ -32,7 +32,7 @@
                         <input
                         type="date"
                         name="start_date"
-                        id="date"
+                        id="start_date"
                         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                         />
                     </div>
@@ -48,7 +48,7 @@
                         <input
                         type="date"
                         name="end_date"
-                        id="date"
+                        id="end_date"
                         class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
                         />
                     </div>
@@ -129,5 +129,44 @@
         </div>
     </div>
    <!-- /Rooms -->
+
+    <script>
+
+        function todayDate() {
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1; //January is 0!
+            var yyyy = today.getFullYear();
+
+            if (dd < 10) {
+                dd = '0' + dd;
+            }
+
+            if (mm < 10) {
+                mm = '0' + mm;
+            }
+
+            return yyyy + '-' + mm + '-' + dd;
+        }
+
+        function stringToDate(stringDate, separator = '-') {
+            // Dividimos la cadena en día, mes y año
+            let dateParts = stringDate.split(separator);
+
+            // Creamos un objeto Date usando los valores de día, mes y año
+            let fecha = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
+
+            return fecha.toDateString();
+        }
+
+        console.log(todayDate());
+        console.log(stringToDate(todayDate()));
+
+        let startDate = document.getElementById("start_date");
+        startDate.setAttribute("min", todayDate());
+        startDate.setAttribute("value", todayDate());
+        
+    </script>
+
   </body>
 </html>
