@@ -13,7 +13,9 @@
   <body class="min-h-screen bg-indigo-50">
     <!-- Header -->
     <header class="bg-indigo-50">
-        <img src="{{ base_url() }}img/logos/logo.png" alt="logo" class="w-40 mx-auto py-4">
+        <a href="{{ base_url() }}booking/select-room" class="block text-center py-4">
+            <img src="{{ base_url() }}img/logos/logo.png" alt="logo" class="w-40 mx-auto py-4">
+        </a>
     </header>
 
     <!-- Date and Room -->
@@ -214,9 +216,14 @@
     <script>
         Swal.fire({
             title: '¡Reservación exitosa!',
-            text: 'Tu reservación se ha realizado con éxito, en breve recibiras un correo electronico confirmando tu reserva.',
+            text: 'Tu reservación se ha realizado con éxito, en breve recibiras un correo electronico {{sendEmail}} confirmando tu reserva. Guarda este numero de reservación: {{ folio }}',
             icon: 'success',
             confirmButtonText: 'Aceptar'
+        }).then((result) => {
+                window.location.href = "{{ base_url() }}/booking/select-room";
+            if (result.isConfirmed) {
+                window.location.href = "{{ base_url() }}/booking/select-room";
+            }
         })
     </script>
     {% endif %}
