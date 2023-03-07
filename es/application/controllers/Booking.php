@@ -124,8 +124,6 @@ class Booking extends CI_Controller {
         $this->room_type = $this->room['name'];
         $this->room_rack_price = $this->room['price'];
 
-        var_dump($this->room);
-
         # Set subtotal
         $subtotal = $this->set_subtotal($this->room_rack_price, $nights);
         
@@ -159,7 +157,7 @@ class Booking extends CI_Controller {
             $success = true;
         }
 
-        $this->twig->display('booking/success_booking', array(
+        $this->twig->display('booking/select_room', array(
             'reservation' => $reservation,
             'success' => $success ? 'Exito': 'Error',
         ));

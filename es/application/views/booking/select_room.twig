@@ -18,7 +18,7 @@
 
     <!-- Date and Room -->
     <div class="flex items-center justify-center bg-indigo-50 p-4">
-        <form method="GET" action="{{base_url()}}booking/book-now" class="md:flex md:gap-4 box-shadow bg-white px-5 sm:px-20 md:px-2 xl:px-10 py-4 rounded">
+        <form id="BookingForm" method="GET" action="{{base_url()}}booking/book-now" class="md:flex md:gap-4 box-shadow bg-white px-5 sm:px-20 md:px-2 xl:px-10 py-4 rounded">
             <!-- Date -->
             <div class="md:w-1/2 sm:flex gap-1">
                 <div class="w-full">
@@ -30,6 +30,7 @@
                         Start Date
                         </label>
                         <input
+                        oninput="setNewMinDate()"
                         type="date"
                         name="start_date"
                         id="start_date"
@@ -93,7 +94,7 @@
                 </div>
             </div>
 
-            <input type="hidden" name="room_id" value="8">
+            <input type="hidden" id="room_id" name="room_id" value="8">
             <!-- /Pax -->
             <!-- submit -->
             <div class="my-auto mt-9 w-full">
@@ -107,15 +108,24 @@
         </form>
     </div>
     <!-- /Date and Room -->
+
+    <!-- Loader -->
+    <div id="showLoader" class="flex h-full max-w-[50rem] items-center justify-center bg-indigo-50 px-4 gap-4 pb-8 mx-auto">
+        <div class="bg-white box-shadow w-full p-4 flex justify-center items-center flex-col rounded">
+            <h3 class="text-2xl font-bold text-gray-700 mb-4">Cargando...</h3>
+            <span class="loader"></span>
+        </div>
+    </div>
+    <!-- /Loader -->
     <!-- Rooms -->
-    <div class="flex h-full items-center justify-center bg-indigo-50 px-4 gap-4 pb-8">
+    <div id="show_rooms" class="hidden h-full items-center justify-center bg-indigo-50 px-4 gap-4 pb-8">
         <!-- Room 1 -->
         <div class="max-w-sm overflow-hidden rounded-xl bg-white shadow-md duration-200 hover:scale-105 hover:shadow-xl">
             <img src="{{ base_url() }}img/room/suit-isabel-hotel-isabel-gdl.png" alt="plant" class="h-auto w-full" />
             <div class="p-5">
                 <h2 class="font-bold text-xl text-gray-700 mb-4">Habitación Sencilla</h2>
                 <p class="text-medium mb-5 text-gray-700">Habitación Sencilla, especialmente diseñada para tu comodidad y conveniencia, recomendada para 2 personas. Esta habitación cuenta con una mesa de trabajo, equipada con una cama King Size perfecta para una buena noche de sueño.</p>
-                <button class="w-full rounded-md bg-indigo-600  py-2 text-indigo-100 hover:bg-indigo-500 hover:shadow-md duration-75">Book now</button>
+                <button onclick="submitForm(8)" class="w-full rounded-md bg-indigo-600  py-2 text-indigo-100 hover:bg-indigo-500 hover:shadow-md duration-75">Book now</button>
             </div>
         </div>
         <!-- Room 2 -->
@@ -124,49 +134,92 @@
             <div class="p-5">
                 <h2 class="font-bold text-xl text-gray-700 mb-4">Habitación Doble</h2>
                 <p class="text-medium mb-5 text-gray-700">Contamos con 40 habitaciones dobles, en ellas podrás disfrutar de la paz y comodidad que produce hospedarse en estas habitaciones estilo rustico, un espacio lleno de confort y descanso. Equipadas con dos camas matrimoniales, ideales para 4 personas.</p>
-                <button class="w-full rounded-md bg-indigo-600  py-2 text-indigo-100 hover:bg-indigo-500 hover:shadow-md duration-75">Book now</button>
+                <button onclick="submitForm(9)" class="w-full rounded-md bg-indigo-600  py-2 text-indigo-100 hover:bg-indigo-500 hover:shadow-md duration-75">Book now</button>
             </div>
         </div>
     </div>
    <!-- /Rooms -->
 
+   <!-- scripts -->
+    <script src="{{ base_url() }}js/luxon.js"></script>
     <script>
+        // Setting min date now/tomorrow
+        const today = luxon.DateTime.local().toISODate();
 
-        function todayDate() {
-            var today = new Date();
-            var dd = today.getDate();
-            var mm = today.getMonth() + 1; //January is 0!
-            var yyyy = today.getFullYear();
-
-            if (dd < 10) {
-                dd = '0' + dd;
-            }
-
-            if (mm < 10) {
-                mm = '0' + mm;
-            }
-
-            return yyyy + '-' + mm + '-' + dd;
+        function setMinDate() {
+            const tomorrow = luxon.DateTime.local().plus({ days: 1 }).toISODate();
+            document.getElementById('start_date').setAttribute('min', today);
+            document.getElementById('end_date').setAttribute('min', tomorrow);
         }
 
-        function stringToDate(stringDate, separator = '-') {
-            // Dividimos la cadena en día, mes y año
-            let dateParts = stringDate.split(separator);
-
-            // Creamos un objeto Date usando los valores de día, mes y año
-            let fecha = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
-
-            return fecha.toDateString();
+        function setDefaultDate() {
+            const tomorrow = luxon.DateTime.local().plus({ days: 1 }).toISODate();
+            document.getElementById('start_date').value = today;
+            document.getElementById('end_date').value = tomorrow;
         }
-
-        console.log(todayDate());
-        console.log(stringToDate(todayDate()));
-
-        let startDate = document.getElementById("start_date");
-        startDate.setAttribute("min", todayDate());
-        startDate.setAttribute("value", todayDate());
         
+        setMinDate();
+        setDefaultDate();
+
+        function setNewMinDate () {
+            const start_date = document.getElementById('start_date').value;
+            const end_date = document.getElementById('end_date').value;
+            const tomorrow = luxon.DateTime.fromISO(start_date).plus({ days: 1 }).toISODate();
+            document.getElementById('end_date').setAttribute('min', tomorrow);
+            document.getElementById('end_date').setAttribute('value', tomorrow);
+            if (end_date < tomorrow) {
+                document.getElementById('end_date').value = tomorrow;
+            }
+        }
+
+        // write a function that returns random number between 1000 and 2000
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max) + 1000;
+        }
+
+        console.log(getRandomInt(1000));
+
+        // Loading rooms
+
+        const bookingForm = document.getElementById('BookingForm');
+        const showRooms = document.getElementById('show_rooms');
+        const showLoader = document.getElementById('showLoader');
+        showRooms.style.display = 'none';
+        showLoader.style.display = 'none';
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            showRooms.style.display = 'none';
+            showLoader.style.display = 'flex';
+            const formData = new FormData(bookingForm);
+            const data = Object.fromEntries(formData);
+            console.log(data);
+
+            setTimeout(() => {
+                loadRooms();
+            }, getRandomInt(1000));
+        });
+        function loadRooms(){
+            showRooms.style.display = 'flex';
+            showLoader.style.display = 'none';
+        }
+
+        function submitForm(room_id) {
+            document.getElementById('room_id').value = room_id ?? 8;
+            document.getElementById('BookingForm').submit();
+        }
     </script>
+
+    {% if success %}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        Swal.fire({
+            title: '¡Reservación exitosa!',
+            text: 'Tu reservación se ha realizado con éxito, en breve recibiras un correo electronico confirmando tu reserva.',
+            icon: 'success',
+            confirmButtonText: 'Aceptar'
+        })
+    </script>
+    {% endif %}
 
   </body>
 </html>
