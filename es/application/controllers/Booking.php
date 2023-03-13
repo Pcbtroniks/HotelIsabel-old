@@ -54,7 +54,8 @@ class Booking extends CI_Controller {
 
     public function select_room()
     {
-        $this->twig->display('booking/select_room');
+        $rooms = $this->room_model->get_rooms();
+        $this->twig->display('booking/select_room', compact('rooms'));
     }
 
     public function book_now()
