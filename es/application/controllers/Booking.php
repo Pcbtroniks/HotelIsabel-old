@@ -195,18 +195,18 @@ class Booking extends CI_Controller {
         # Set mail config
         $config['useragent'] = 'Rengine';
         $config['protocol'] = 'smtp';
-        // $config['smtp_host'] = 'mail.hotelisabel.com';
-        $config['smtp_host'] = 'sandbox.smtp.mailtrap.io';
-        // $config['smtp_port'] = '465';
-        $config['smtp_port'] = '2525';
-        // $config['smtp_user'] = 'reservaciones.web@hotelisabel.com';
-        $config['smtp_user'] = '2363639b25db9c';
-        // $config['smtp_pass'] = 'j!q8T_E[b]*}ee#okM';
-        $config['smtp_pass'] = '2e7224a58cd3b9';
-        // $config['smtp_crypto'] = 'ssl';
-        $config['smtp_crypto'] = 'TLS';
-        $config['crlf'] = '\r\n';
-        $config['newline'] = '\r\n';
+        $config['smtp_host'] = 'mail.hotelisabel.com';
+        // $config['smtp_host'] = 'sandbox.smtp.mailtrap.io';
+        $config['smtp_port'] = '465';
+        // $config['smtp_port'] = '2525';
+        $config['smtp_user'] = 'reservaciones.web@hotelisabel.com';
+        // $config['smtp_user'] = '2363639b25db9c';
+        // $config['smtp_pass'] = '2e7224a58cd3b9';
+        $config['smtp_pass'] = 'j!q8T_E[b]*}ee#okM';
+        $config['smtp_crypto'] = 'ssl';
+        // $config['smtp_crypto'] = 'TLS';
+        // $config['crlf'] = '\r\n';
+        // $config['newline'] = '\r\n';
         $config['charset'] = 'utf-8';
         $config['mailtype'] = 'html';
         $config['wordwrap'] = true;
@@ -215,7 +215,7 @@ class Booking extends CI_Controller {
         // Initialize email library
         $this->email->initialize($config);
 
-        $this->email->from('reservaciones.web@hotelcasinoplaza.mx', 'Hotel Casino Plaza');
+        $this->email->from('reservaciones.web@hotelisabel.com', 'Rengine');
         $this->email->to($DestinataryEmail);
         
         $this->email->subject($this->subject);
